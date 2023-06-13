@@ -3,11 +3,14 @@ import TopBar from "@/components/TopBar";
 import { inputState } from "@/store/campaignSlice";
 import { useSelector } from "react-redux";
 import BreadcrumbStepper from "@/components/Stepper";
+import RadioButtonList from "../RadioButtonList";
+import CardList from "../CustomCard";
+import TabPanel from "../TabPanel";
 
 
 const StepForm = ({ SelectItems, component: Component, stepButtons: StepButtons }) => {
     const inputValues = useSelector(inputState);
-    
+    const activeStep = useSelector((state) => state.step.value);
     return (
         <>
             <TopBar title={inputValues.name} component={BreadcrumbStepper} />
@@ -21,7 +24,8 @@ const StepForm = ({ SelectItems, component: Component, stepButtons: StepButtons 
                     {/* Parte direita */}
                     <Grid item xs={12} md={6} sx={{ alignContent: 'center' }}>
                         <Box sx={{ height: '100%', display: 'flex', mt: 8, ml: '121px' }}>
-                            {Component && <Component />}
+                            {activeStep === 0 && <CardList />}
+                            {activeStep === 1 && <TabPanel />}
                         </Box>
                     </Grid>
 

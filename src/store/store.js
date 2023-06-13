@@ -4,7 +4,7 @@ import { stepSlice } from "./stepSlice";
 import { createWrapper } from "next-redux-wrapper";
 import { openSlice } from "./openSlice";
 import { campaignSlice } from "./campaignSlice";
-import { selectTabSlice } from "./selectTabSlice";
+import { tabPanelSlice } from './tabPanelSlice';
 
 
 const makeStore = () =>
@@ -14,7 +14,7 @@ const makeStore = () =>
             [dialogSlice.name]: dialogSlice.reducer,
             [stepSlice.name]: stepSlice.reducer,
             [campaignSlice.name]: campaignSlice.reducer,
-            [selectTabSlice.name]: selectTabSlice.reducer,
+            [tabPanelSlice.name]: tabPanelSlice.reducer,
         },
         devTools: true,
     });

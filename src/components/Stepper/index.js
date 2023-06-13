@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Step, StepLabel, Stepper } from '@mui/material';
 import { styled } from '@mui/system';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import { normalizeText } from 'normalize-text';
+import { useRouter } from 'next/router';
+
 
 const StyledStepper = styled(Stepper)`
   && {
@@ -62,33 +63,39 @@ const BreadcrumbStepper = () => {
   const activeStep = useSelector((state) => state.step.value);
   const router = useRouter();
 
-  useEffect(() => {
+  useMemo(() => {
     const path = normalizeText(steps[activeStep]);
     router.push(`/${path}`);
   }, [activeStep, router, steps]);
 
+  const renderStep = (label, index) => {
+    return (
+      <Step key={index}>
+        <StepLabel
+          icon={<NavigateNextIcon />}
+          classes={{
+            labelContainer: 'MuiStepLabel-labelContainer',
+            label: 'MuiStepLabel-label',
+            iconContainer: 'MuiStepLabel-iconContainer'
+          }}
+          sx={{
+            color: activeStep === index ? 'neutral.main' : 'neutralSecodary.main',
+            '&.MuiStepLabel-active': {
+              color: 'neutral.main',
+            }
+          }}
+        >
+          {label}
+        </StepLabel>
+      </Step>
+    )
+  };
+
+  const renderedSteps = steps.map(renderStep);
+
   return (
     <StyledStepper activeStep={activeStep} alternativeLabel>
-      {steps.map((label, index) => (
-        <Step key={index}>
-          <StepLabel
-            icon={<NavigateNextIcon />}
-            classes={{
-              labelContainer: 'MuiStepLabel-labelContainer',
-              label: 'MuiStepLabel-label',
-              iconContainer: 'MuiStepLabel-iconContainer'
-            }}
-            sx={{
-              color: activeStep === index ? 'neutral.main' : 'neutralSecodary.main',
-              '&.MuiStepLabel-active': {
-                color: 'neutral.main',
-              }
-            }}
-          >
-            {label}
-          </StepLabel>
-        </Step>
-      ))}
+      {renderedSteps}
     </StyledStepper>
   );
 };

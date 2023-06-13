@@ -1,40 +1,23 @@
 import React from 'react';
 import { Tab, Tabs, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelect } from '@/store/selectTabSlice';
-import { addCampaign, inputState } from '@/store/campaignSlice';
+import { setSelectedButton } from '@/store/tabPanelSlice';
+import { addCampaign } from '@/store/campaignSlice';
+import { tabs } from '@/utils/tabs';
 
-const arr = [
-    {
-        field: 'toneVoice',
-        title: 'Tom de voz',
-        value: 'Formal'
-    },
-    {
-        field: 'creativityTemperature',
-        title: 'Temperatura de Criatividade',
-        value: 5
-    },
-    {
-        field: 'characterLimit',
-        title: 'Comprimento de Texto',
-        value: 116
-    },
-];
 
 const ParameterComponent = () => {
-    const selectedTab = useSelector((state) => state.tab.selected);
+    const selectedButton = useSelector((state) => state.tabPanel.selectedButton);
+    const activeStep = useSelector((state) => state.step.value);
+
     const dispatch = useDispatch();
-    const inputValues = useSelector(inputState);
 
-    const handleTabChange = (event, newTab) => {
-        dispatch(setSelect(newTab));
+    const handleTabChange = (event, newValue) => {
+        dispatch(setSelectedButton(newValue));
     };
-
-    const handleItemClick = (key, value) => {
-        dispatch(addCampaign({ [key]: value }));
-        console.log(inputValues)
-    };
+    // const handleItemClick = (key, value) => {
+    //     dispatch(addCampaign({ [key]: value }));
+    // };
 
     return (
         <>
@@ -53,15 +36,14 @@ const ParameterComponent = () => {
                         display: 'none',
                     },
                 }}
-                value={selectedTab}
-                onChange={handleTabChange}
+                value={selectedButton} onChange={handleTabChange}
                 aria-label='selectable buttons'
             >
-                {arr.map((button, index) => (
+                {tabs.map((item, index) => (
                     <Tab
-                        onClick={() => handleItemClick(button.field, button.value)}
                         key={index}
-                        label={button.title}
+                        label={item.title}
+                        value={item.title}
                         sx={{
                             borderRadius: '16px',
                             height: '72px',
@@ -69,14 +51,12 @@ const ParameterComponent = () => {
                             width: '248px',
                             color: 'neutral.main',
                             border: '1px solid #D8D8D8',
-                            backgroundColor: selectedTab === index ? '#fff' : 'initial',
-                            borderColor:
-                                selectedTab === index ? 'customBlue.main' : '#D8D8D8',
-                            boxShadow:
-                                selectedTab === index ? '0px -5px 10px rgba(0, 0, 0, 0.2)' : 'none',
+                            backgroundColor: selectedButton === item.title ? '#fff' : 'initial',
+                            borderColor: selectedButton === item.title ? 'customBlue.main' : '#D8D8D8',
+                            boxShadow: selectedButton === item.title ? '0px -5px 10px rgba(0, 0, 0, 0.2)' : 'none',
                             '&:hover': {
-                                backgroundColor: selectedTab === index ? '#fff' : 'initial',
-                                borderColor: selectedTab === index ? 'customBlue.main' : '#D8D8D8',
+                                backgroundColor: selectedButton === item.title ? '#fff' : 'initial',
+                                borderColor: selectedButton === item.title ? 'customBlue.main' : '#D8D8D8',
                             },
                         }}
                     />

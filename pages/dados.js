@@ -1,8 +1,7 @@
 import DataBaseComponent from "@/components/DataBaseComponent"
 
-const Dados = () => {
-  return (
-    <DataBaseComponent />
-  )
-}
+const Dados = () => (
+  <DataBaseComponent />
+)
+
 export default Dados

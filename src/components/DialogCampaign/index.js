@@ -4,36 +4,12 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { selectDialogState, setDialogState, setInput } from '@/store/dialogSlice'
+import { selectDialogState, setDialogState } from '@/store/dialogSlice'
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/router';
 import { InputLabel, MenuItem, OutlinedInput, Select } from '@mui/material';
 import { addCampaign } from '@/store/campaignSlice';
 
-
-const mock = {
-  "id": 1,
-  "name": "oi",
-  "description": "Descrição da campanha",
-  "campaignChannel": "SMS",
-  "toneVoice": "Formal",
-  "creativityTemperature": 5,
-  "characterLimit": 116,
-  "paragraphs": 1,
-  "information": "Informação da campanha",
-  "gender": "Todos",
-  "age": 30,
-  "local": "São Paulo",
-  "keyWords": "Controle",
-  "mentalTriggers": [
-    "Necessidade",
-    "streaming",
-    "dados"
-  ],
-  "link": "https://site.com",
-  "useEmojis": true,
-  "author": "Leticia Sampaio"
-}
 
 const DialogCampaign = () => {
   const isOpen = useSelector(selectDialogState);
@@ -78,6 +54,7 @@ const DialogCampaign = () => {
 
         <InputLabel sx={{ textAlign: 'left' }} id="select-label">Base de Dados</InputLabel>
         <Select
+          sx={{ textAlign: 'left' }}
           defaultValue=""
           input={<OutlinedInput />}
           inputProps={{ 'aria-label': 'Without label' }}
