@@ -26,7 +26,7 @@ const SideMenuList = () => {
                 selected={selectedItem === 'painel'}
                 onClick={() => handleItemClick('painel')}
                 component={Link}
-                to="/painel"
+                href="/painel"
             >
                 <ListItemIcon>
                     <GridViewIcon sx={{ color: '#004691' }} />
@@ -34,6 +34,7 @@ const SideMenuList = () => {
                 <ListItemText primary="Painel" />
             </StyledListItemButton>
             <StyledListItemButton
+                disabled
                 selected={selectedItem === 'dados'}
                 onClick={() => handleItemClick('dados')}
                 component={Link}
@@ -45,7 +46,7 @@ const SideMenuList = () => {
                 <ListItemText primary="Base de Dados" />
             </StyledListItemButton>
             <Divider />
-            <StyledListItemButton>
+            <StyledListItemButton disabled>
                 <ListItemIcon>
                     <LogoutIcon sx={{ color: '#004691' }} />
                 </ListItemIcon>

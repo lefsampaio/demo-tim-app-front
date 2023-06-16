@@ -13,7 +13,8 @@ export const getCampaigns = () => async dispatch => {
 }
 export const postCampaign = async (data) => {
     try {
-        await api.post('/campaign', JSON.stringify(data));
+        return await api.post('/campaign', JSON.stringify(data))
+
     } catch (e) {
         console.log(e.message)
     }

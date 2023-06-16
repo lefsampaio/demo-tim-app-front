@@ -7,7 +7,7 @@ const Parametrizacao = () => (
   <StepForm
     SelectItems={ParameterComponent}
     stepButtons={StepButtons}
-    component={TabPanel}
+    // component={TabPanel}
   />
 );
 export default Parametrizacao

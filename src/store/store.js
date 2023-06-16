@@ -5,6 +5,7 @@ import { createWrapper } from "next-redux-wrapper";
 import { openSlice } from "./openSlice";
 import { campaignSlice } from "./campaignSlice";
 import { tabPanelSlice } from './tabPanelSlice';
+import { itemsSlice } from "./itemsSlice";
 
 
 const makeStore = () =>
@@ -15,6 +16,7 @@ const makeStore = () =>
             [stepSlice.name]: stepSlice.reducer,
             [campaignSlice.name]: campaignSlice.reducer,
             [tabPanelSlice.name]: tabPanelSlice.reducer,
+            [itemsSlice.name]: itemsSlice.reducer,
         },
         devTools: true,
     });

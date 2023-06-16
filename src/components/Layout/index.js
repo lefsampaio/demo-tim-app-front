@@ -1,13 +1,11 @@
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Sidebar from "../SideBar";
 
 const Layout = ({ children }) => {
     return (
         <Box >
             <Sidebar />
-            <Box>
-                {children}
-            </Box>
+            {children}
         </Box>
     )
 

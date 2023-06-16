@@ -61,12 +61,6 @@ const StyledStepper = styled(Stepper)`
 const BreadcrumbStepper = () => {
   const steps = useMemo(() => ['canal', 'parametrização', 'resultados'], []);
   const activeStep = useSelector((state) => state.step.value);
-  const router = useRouter();
-
-  useMemo(() => {
-    const path = normalizeText(steps[activeStep]);
-    router.push(`/${path}`);
-  }, [activeStep, router, steps]);
 
   const renderStep = (label, index) => {
     return (

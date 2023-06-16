@@ -35,20 +35,23 @@ const cardsData = [
     {
         icon: <PhoneIphoneIcon fontSize="large" />,
         title: "SMS",
+        value: "SMS",
         subtitle:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
+            "Os conteúdos têm um limite de até 116 caracteres.",
     },
     {
         icon: <DraftsIcon fontSize="large" />,
         title: "Email Marketing",
+        value: 'EMKT',
         subtitle:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
+            "Os conteúdos são compostos por: assunto (até 50 caracteres) e corpo do e-mail (entre 200 e 300 palavras).",
     },
     {
         icon: <WhatsAppIcon fontSize="large" />,
         title: "WhatsApp",
+        value: 'WHATSAPP',
         subtitle:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
+            "Os conteúdos podem conter de 150 a 300 caracteres.",
     },
 ];
 
@@ -60,37 +63,37 @@ const CardList = () => {
         dispatch(addCampaign({ [key]: value }))
         setSelectedItem(value);
     };
-    
+
     return (
-        <Box display="flex" justifyContent="center">
-            <Box maxWidth="600px" width="100%">
+        <Box id='éaquitio' justifyContent="center">
+            <Box maxWidth="600px">
                 {cardsData.map((card) => (
                     <CustomCard
-                        key={card.title}
+                        key={card.value}
                         variant="outlined"
-                        onClick={() => handleItemClick('campaignChannel', card.title)}
-                        selected={selectedItem === card.title}
+                        onClick={() => handleItemClick('campaignChannel', card.value)}
+                        selected={selectedItem === card.value}
                     >
-                        <CardContent>
-                            <Box display="flex" alignItems="center" marginBottom="8px">
-                                <Icon
-                                    sx={{
-                                        marginRight: "8px", width: '40px',
-                                        height: '48px', color: "customBlue.main"
-                                    }}
-                                >
-                                    {card.icon}
-                                </Icon>
-                                <Box>
-                                    <Typography variant="h2" sx={{ fontSize: '24px' }} fontWeight={700} color="neutral.main">
-                                        {card.title}
-                                    </Typography>
-                                    <Typography sx={{ fontSize: '14px' }} color="lighter.main">
-                                        {card.subtitle}
-                                    </Typography>
-                                </Box>
+                        {/* <CardContent> */}
+                        <Box  display='grid' sx={{ gridTemplateColumns: '0fr 11fr' }}alignItems="center" marginBottom="8px">
+                            <Icon
+                                sx={{
+                                    marginRight: "8px", width: '40px',
+                                    height: '48px', color: "customBlue.main"
+                                }}
+                            >
+                                {card.icon}
+                            </Icon>
+                            <Box ml='24px'>
+                                <Typography variant="h2" sx={{ fontSize: '24px' }} fontWeight={700}  color="neutral.main">
+                                    {card.title}
+                                </Typography>
+                                <Typography sx={{ fontSize: '14px', maxWidth: '450px' }} color="lighter.main">
+                                    {card.subtitle}
+                                </Typography>
                             </Box>
-                        </CardContent>
+                        </Box>
+                        {/* </CardContent> */}
                     </CustomCard>
                 ))}
             </Box>
