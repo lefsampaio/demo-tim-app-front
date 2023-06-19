@@ -1,19 +1,19 @@
-import React from 'react';
-import { CircularProgress, styled } from '@mui/material';
+import React from 'react'
+import { CircularProgress, styled } from '@mui/material'
 
 const LoadingContainer = styled('div')({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '40vh',
-});
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '40vh',
+})
 
 const LoadingScreen = () => {
-    return (
-        <LoadingContainer>
-            <CircularProgress />
-        </LoadingContainer>
-    );
-};
+  return (
+    <LoadingContainer>
+      <CircularProgress />
+    </LoadingContainer>
+  )
+}
 
-export default LoadingScreen;
+export default LoadingScreen

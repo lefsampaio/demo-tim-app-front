@@ -1,11 +1,8 @@
-import React, { useMemo } from 'react';
-import { Step, StepLabel, Stepper } from '@mui/material';
-import { styled } from '@mui/system';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { useSelector } from 'react-redux';
-import { normalizeText } from 'normalize-text';
-import { useRouter } from 'next/router';
-
+import React, { useMemo } from 'react'
+import { Step, StepLabel, Stepper } from '@mui/material'
+import { styled } from '@mui/system'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import { useSelector } from 'react-redux'
 
 const StyledStepper = styled(Stepper)`
   && {
@@ -56,11 +53,11 @@ const StyledStepper = styled(Stepper)`
       }
     }
   }
-`;
+`
 
 const BreadcrumbStepper = () => {
-  const steps = useMemo(() => ['canal', 'parametrização', 'resultados'], []);
-  const activeStep = useSelector((state) => state.step.value);
+  const steps = useMemo(() => ['canal', 'parametrização', 'resultados'], [])
+  const activeStep = useSelector((state) => state.step.value)
 
   const renderStep = (label, index) => {
     return (
@@ -70,28 +67,29 @@ const BreadcrumbStepper = () => {
           classes={{
             labelContainer: 'MuiStepLabel-labelContainer',
             label: 'MuiStepLabel-label',
-            iconContainer: 'MuiStepLabel-iconContainer'
+            iconContainer: 'MuiStepLabel-iconContainer',
           }}
           sx={{
-            color: activeStep === index ? 'neutral.main' : 'neutralSecodary.main',
+            color:
+              activeStep === index ? 'neutral.main' : 'neutralSecodary.main',
             '&.MuiStepLabel-active': {
               color: 'neutral.main',
-            }
+            },
           }}
         >
           {label}
         </StepLabel>
       </Step>
     )
-  };
+  }
 
-  const renderedSteps = steps.map(renderStep);
+  const renderedSteps = steps.map(renderStep)
 
   return (
     <StyledStepper activeStep={activeStep} alternativeLabel>
       {renderedSteps}
     </StyledStepper>
-  );
-};
+  )
+}
 
-export default BreadcrumbStepper;
+export default BreadcrumbStepper

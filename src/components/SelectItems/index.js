@@ -1,8 +1,4 @@
 const SelectItems = ({ leftSide: LeftSide }) => {
-    return (
-        <>
-            {LeftSide}
-        </>
-    )
+  return <>{LeftSide}</>
 }
 export default SelectItems

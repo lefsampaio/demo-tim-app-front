@@ -1,44 +1,44 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux'
 
-import { tabs } from '@/utils/tabs';
-import { Box, Button, Divider, Snackbar, Typography } from '@mui/material';
-import MuiAlert from '@mui/material/Alert';
-import RadioButtonList from '../RadioButtonList';
-import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined';
-import TimelineComponent from '../TimeLineComponent';
-import { useState } from 'react';
+// import { tabs } from '@/utils/tabs'
+import { Box } from '@mui/material'
+// import MuiAlert from '@mui/material/Alert'
+// import RadioButtonList from '../RadioButtonList'
+// import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined'
+import TimelineComponent from '../TimeLineComponent'
+// import { useState } from 'react'
 
 const TabPanel = () => {
-    const selectedButton = useSelector((state) => state.tabPanel.selectedButton);
-    const [open, setOpen] = useState(false);
+  //   const selectedButton = useSelector((state) => state.tabPanel.selectedButton)
+  //   const [open, setOpen] = useState(false)
 
-    const handleClick = () => {
-        setOpen(true);
-    };
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
+  //   const handleClick = () => {
+  //     setOpen(true)
+  //   }
+  //   const handleClose = (event, reason) => {
+  //     if (reason === 'clickaway') {
+  //       return
+  //     }
 
-        setOpen(false);
-    };
-    // const componentMap = {
-    //   'Tom de voz': ComponenteTomDeVoz,
-    //   'Temperatura de Criatividade': ComponenteTemperaturaDeCriatividade,
-    //   'Comprimento de Texto': ComponenteComprimentoDeTexto,
-    //   'Playground': ComponentePlayground,
-    //   'Público alvo': ComponentePublicoAlvo,
-    //   'Palavras-chave': ComponentePalavrasChave,
-    //   'Gatilhos mentais': ComponenteGatilhosMentais,
-    //   'Link': ComponenteLink,
-    //   'Emoji': ComponenteEmoji,
-    //   'Hashtags': ComponenteHashtags,
-    // };
+  //     setOpen(false)
+  //   }
+  // const componentMap = {
+  //   'Tom de voz': ComponenteTomDeVoz,
+  //   'Temperatura de Criatividade': ComponenteTemperaturaDeCriatividade,
+  //   'Comprimento de Texto': ComponenteComprimentoDeTexto,
+  //   'Playground': ComponentePlayground,
+  //   'Público alvo': ComponentePublicoAlvo,
+  //   'Palavras-chave': ComponentePalavrasChave,
+  //   'Gatilhos mentais': ComponenteGatilhosMentais,
+  //   'Link': ComponenteLink,
+  //   'Emoji': ComponenteEmoji,
+  //   'Hashtags': ComponenteHashtags,
+  // };
 
-    // const Component = componentMap[selectedButton];
-    return (
-        <Box >
-            {/* {tabs.map((item, index) => (
+  // const Component = componentMap[selectedButton];
+  return (
+    <Box>
+      {/* {tabs.map((item, index) => (
                 <Box sx={{ mb: '70px' }} key={index}>
                     {selectedButton == item.title && (
                         <Box sx={{ maxHeight: '90vh' }}>
@@ -64,10 +64,9 @@ const TabPanel = () => {
                 },
             }} variant="contained">salvar parâmetro</Button>
             <Divider /> */}
-            <TimelineComponent />
+      <TimelineComponent />
+    </Box>
+  )
+}
 
-        </Box>
-    );
-};
-
-export default TabPanel;
+export default TabPanel

@@ -1,7 +1,6 @@
-import StepForm from "@/components/StepForm";
-import StepButtons from "@/components/StepButtons";
-import ParameterComponent from "@/components/ParameterComponent";
-import TabPanel from "@/components/TabPanel";
+import StepForm from '@/components/StepForm'
+import StepButtons from '@/components/StepButtons'
+import ParameterComponent from '@/components/ParameterComponent'
 
 const Parametrizacao = () => (
   <StepForm
@@ -9,5 +8,5 @@ const Parametrizacao = () => (
     stepButtons={StepButtons}
     // component={TabPanel}
   />
-);
+)
 export default Parametrizacao
