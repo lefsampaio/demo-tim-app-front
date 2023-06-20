@@ -1,6 +1,6 @@
 import { inputState } from '@/store/campaignSlice'
 import { Timeline } from '@mui/lab'
-import { Box, Link, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import renderTimelineItem from './renderTimelineItem'

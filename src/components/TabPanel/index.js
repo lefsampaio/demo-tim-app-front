@@ -10,6 +10,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import ComponenteToneVoice from '../ComponenteToneVoice'
 import ComponenteCreativityTemperature from '../ComponenteCreativityTemperature'
+import ModalComponent from '../ModalComponent'
 
 const TabPanel = () => {
   const selectedButton = useSelector((state) => state.tabPanel.selectedButton)
@@ -28,17 +29,16 @@ const TabPanel = () => {
   const componentMap = {
     'Tom de voz': ComponenteToneVoice,
     'Temperatura de Criatividade': ComponenteCreativityTemperature,
-    // 'Comprimento de Texto': ComponenteComprimentoDeTexto,
-    // Playground: ComponentePlayground,
-    // 'Público alvo': ComponentePublicoAlvo,
-    // 'Palavras-chave': ComponentePalavrasChave,
-    // 'Gatilhos mentais': ComponenteGatilhosMentais,
-    // Link: ComponenteLink,
-    // Emoji: ComponenteEmoji,
-    // Hashtags: ComponenteHashtags,
+    'Comprimento de Texto': ModalComponent,
+    Playground: ModalComponent,
+    'Público alvo': ModalComponent,
+    'Palavras-chave': ModalComponent,
+    'Gatilhos mentais': ModalComponent,
+    Link: ModalComponent,
+    Emoji: ModalComponent,
+    Hashtags: ModalComponent,
   }
-  //   const Component = componentMap[selectedButton]
-  const Component = componentMap[('Tom de voz', 'Temperatura de Criatividade')]
+  const Component = componentMap[selectedButton]
   return (
     <Box>
       {tabs.map((item, index) => (
