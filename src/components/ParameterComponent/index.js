@@ -21,6 +21,7 @@ const style = {
 const ParameterComponent = () => {
   const selectedButton = useSelector((state) => state.tabPanel.selectedButton)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
   const handleLockClick = () => {
     setIsModalOpen(true)
   }
@@ -61,8 +62,7 @@ const ParameterComponent = () => {
       >
         {tabs.map((item, index) => (
           <Tab
-            // disabled
-            onClick={handleLockClick}
+            onClick={index > 1 && handleLockClick}
             key={item.title}
             label={
               <Grid container alignItems="center" spacing={1}>
@@ -82,8 +82,12 @@ const ParameterComponent = () => {
               border: '1px solid #D8D8D8',
               backgroundColor:
                 selectedButton === item.title ? '#fff' : 'initial',
-              // borderColor: selectedButton === item.title ? 'customBlue.main' : '#D8D8D8',
-              // boxShadow: selectedButton === item.title ? '0px -5px 10px rgba(0, 0, 0, 0.2)' : 'none',
+              borderColor:
+                selectedButton === item.title ? 'customBlue.main' : '#D8D8D8',
+              boxShadow:
+                selectedButton === item.title
+                  ? '0px -5px 10px rgba(0, 0, 0, 0.2)'
+                  : 'none',
               '&:hover': {
                 backgroundColor:
                   selectedButton === item.title ? '#fff' : 'initial',

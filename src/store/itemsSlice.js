@@ -3,17 +3,17 @@ import { createSlice } from '@reduxjs/toolkit'
 export const itemsSlice = createSlice({
   name: 'items',
   initialState: {
-    isLoading: false,
+    loading: false,
     isChecked: false,
     generatedContent: [],
   },
   reducers: {
     startLoading: (state) => {
-      state.isLoading = true
+      state.loading = true
     },
     setGeneratedContent: (state, action) => {
       state.generatedContent = action.payload
-      state.isLoading = false
+      state.loading = false
     },
     toggleCheckbox: (state, action) => {
       const itemId = action.payload
@@ -30,6 +30,5 @@ export const itemsSlice = createSlice({
 })
 export const { toggleCheckbox, deleteItem, setGeneratedContent, startLoading } =
   itemsSlice.actions
-export const generatedList = (state) => state.items.generatedContent
-
+export const generatedList = (state) => state.items
 export default itemsSlice.reducer

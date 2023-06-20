@@ -10,7 +10,7 @@ export const tabs = [
     title: 'Temperatura de Criatividade',
     value: 5,
     description:
-      'Controle a aleatoriedade das respostas geradas pela Inteligência Artificial.',
+      'Ajuste o nível de variação nas respostas geradas pela Inteligência Artificial.',
   },
   {
     field: 'characterLimit',

@@ -1,5 +1,7 @@
+import { addCampaign } from '@/store/campaignSlice'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 const RadioButtonList = () => {
   const options = [
@@ -10,19 +12,20 @@ const RadioButtonList = () => {
     'Profissional',
     'Natural',
   ]
-  const [radio, setRadio] = useState('Formal')
+  const [radio, setRadio] = useState('')
+  const dispatch = useDispatch()
 
-  const handleTabChange = (event) => {
-    setRadio(event.target.value)
+  const handleItemClick = (key, value) => {
+    dispatch(addCampaign({ [key]: value }))
+    setRadio(value)
   }
 
   return (
     <>
       <RadioGroup
-        sx={{ justifyContent: 'space-between' }}
-        row
+        sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}
         value={radio}
-        onChange={handleTabChange}
+        onChange={(event) => handleItemClick('toneVoice', event.target.value)}
       >
         {options.map((option, index) => (
           <FormControlLabel

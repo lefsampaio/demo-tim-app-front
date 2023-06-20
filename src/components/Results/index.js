@@ -14,7 +14,7 @@ import { generatedList, toggleCheckbox } from '@/store/itemsSlice'
 import { formatDateTime } from '@/utils/formatDate'
 
 const Results = () => {
-  const { isLoading, isChecked } = useSelector(generatedList)
+  const { loading, isChecked } = useSelector(generatedList)
   const items = useSelector(generatedList)
   const dispatch = useDispatch()
 
@@ -27,76 +27,74 @@ const Results = () => {
   // };
   return (
     <>
-      {isLoading ? (
+      <Typography
+        component="h1"
+        color="neutral.main"
+        gutterBottom
+        sx={{ fontSize: '18px', fontWeight: '700' }}
+      >
+        Conteúdos gerados pela IA
+      </Typography>
+      {loading ? (
         <LoadingScreen />
       ) : (
-        <>
-          <Typography
-            component="h1"
-            color="neutral.main"
-            gutterBottom
-            sx={{ fontSize: '18px', fontWeight: '700' }}
-          >
-            Conteúdos gerados pela IA
-          </Typography>
-          <List>
-            {items.generatedContent?.map((item) => (
-              <Box key={item?.id}>
-                <ListItem pl={0} alignItems="flex-start">
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      width: '100%',
-                    }}
-                  >
-                    <Checkbox
-                      checked={isChecked}
-                      onChange={() => handleCheckboxToggle(item?.id)}
-                    />
-                    <ListItemText
-                      primary={
-                        <>
+        <List>
+          {items.generatedContent.generatedContent?.map((item) => (
+            <Box key={item?.id}>
+              <ListItem pl={0} alignItems="flex-start">
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    width: '100%',
+                  }}
+                >
+                  <Checkbox
+                    checked={isChecked}
+                    onChange={() => handleCheckboxToggle(item?.id)}
+                  />
+                  <ListItemText
+                    primary={
+                      <>
+                        <Typography
+                          component="span"
+                          sx={{ fontSize: '14px', fontWeight: '700' }}
+                          variant="subtitle1"
+                        >
+                          {`${item?.title} -`}{' '}
                           <Typography
                             component="span"
-                            sx={{ fontSize: '14px', fontWeight: '700' }}
+                            sx={{ fontSize: '14px' }}
                             variant="subtitle1"
-                          >
-                            {`${item?.title} -`}{' '}
-                            <Typography
-                              component="span"
-                              sx={{ fontSize: '14px' }}
-                              variant="subtitle1"
-                            >{` ${formatDateTime(
-                              item?.dateRegistration,
-                            )}`}</Typography>
-                          </Typography>
-                          {/* <IconButton edge="end" sx={{ color: 'customBlue.main' }} aria-label="delete" onClick={() => handleDelete(item?.id)}>
+                          >{` ${formatDateTime(
+                            item?.dateRegistration,
+                          )}`}</Typography>
+                        </Typography>
+                        {/* <IconButton edge="end" sx={{ color: 'customBlue.main' }} aria-label="delete" onClick={() => handleDelete(item?.id)}>
                                                         <DeleteIcon />
                                                     </IconButton> */}
-                        </>
-                      }
-                      secondary={item?.content}
-                    />
-                  </Box>
-                  <Rating
-                    sx={{
-                      color: 'customBlue.main',
-                      '& .MuiRating-iconEmpty': {
-                        color: 'customBlue.main',
-                      },
-                    }}
-                    readOnly
-                    name={`rating-${item?.id}`}
-                    value={item?.ratingStars}
-                    max={5}
+                      </>
+                    }
+                    secondary={item?.content}
                   />
-                </ListItem>
-                <Divider />
-              </Box>
-            ))}
-          </List>
-        </>
+                </Box>
+                <Rating
+                  sx={{
+                    color: 'customBlue.main',
+                    '& .MuiRating-iconEmpty': {
+                      color: 'customBlue.main',
+                    },
+                  }}
+                  readOnly
+                  name={`rating-${item?.id}`}
+                  value={item?.ratingStars}
+                  max={5}
+                />
+              </ListItem>
+              <Divider />
+            </Box>
+          ))}
+        </List>
       )}
     </>
   )
