@@ -1,59 +1,78 @@
 import React, { useState } from 'react'
-import { Box, Button } from '@mui/material'
-// import { addCampaign } from '@/store/campaignSlice'
-// import { useDispatch } from 'react-redux'
+import { Box, Button, Card, styled } from '@mui/material'
+import { useDispatch } from 'react-redux'
+import { addCampaign } from '@/store/campaignSlice'
+
+const CustomCard = styled(Card)(({ theme, selected }) => ({
+  width: '252px',
+  border: `1px solid ${theme.palette.customBlue.main}`,
+  minHeight: '88px',
+  padding: '8px 8px 0 8px',
+  marginBottom: '24px',
+  borderRadius: '16px',
+  textTransform: 'none',
+  textAlign: 'left',
+  boxShadow:
+    ' 0px 2px 4px - 1px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.1), 0px 1px 10px 0px rgba(0, 0, 0, 0.1)',
+  backgroundColor: 'transparent',
+  color: 'inherit',
+}))
 
 const ComponenteCharacterLimit = () => {
-  //   const [temperature, setTemperature] = useState(8.5)
-  const [count1, setCount1] = useState(0)
-  const [count2, setCount2] = useState(0)
-  //   const dispatch = useDispatch()
-  const handleIncrement1 = () => {
-    if (count1 < 150) {
-      setCount1(count1 + 1)
+  const [character, setCharacter] = useState(0)
+  const [paragraph, setParagraph] = useState(0)
+  const dispatch = useDispatch()
+  const incrementCharacter = () => {
+    if (character < 150) {
+      setCharacter(character + 1)
     }
   }
 
-  const handleDecrement1 = () => {
-    if (count1 > 0) {
-      setCount1(count1 - 1)
+  const decrementCharacter = () => {
+    if (character > 0) {
+      setCharacter(character - 1)
     }
   }
 
-  const handleIncrement2 = () => {
-    if (count2 < 3) {
-      setCount2(count2 + 1)
+  const incrementParagraph = () => {
+    if (paragraph < 3) {
+      setParagraph(paragraph + 1)
     }
   }
 
-  const handleDecrement2 = () => {
-    if (count2 > 0) {
-      setCount2(count2 - 1)
+  const decrementParagraph = (key, value) => {
+    if (paragraph > 0) {
+      setParagraph(paragraph - 1)
+      dispatch(addCampaign({ [key]: value }))
     }
   }
 
-  //   const handleTemperatureChange = (key, value) => {
-  //     dispatch(addCampaign({ [key]: value }))
-  //     setTemperature(value)
-  //   }
+  // const handleTemperatureChange = (key, value) => {
+  //   dispatch(addCampaign({ [key]: value }))
+  //   setTemperature(value)
+  // }
 
   return (
     <Box width="35vw">
-      <Button variant="contained" onClick={handleIncrement1}>
-        +
-      </Button>
-      <Button variant="contained" onClick={handleDecrement1}>
-        -
-      </Button>
-      <span>{count1}</span>
+      <CustomCard>
+        <Button variant="contained" onClick={incrementCharacter}>
+          +
+        </Button>
+        <span>{character}</span>
+        <Button variant="contained" onClick={decrementCharacter}>
+          -
+        </Button>
+      </CustomCard>
       <br />
-      <Button variant="contained" onClick={handleIncrement2}>
-        +
-      </Button>
-      <Button variant="contained" onClick={handleDecrement2}>
-        -
-      </Button>
-      <span>{count2}</span>
+      <CustomCard>
+        <Button variant="contained" onClick={incrementParagraph}>
+          +
+        </Button>
+        <span>{paragraph}</span>
+        <Button variant="contained" onClick={decrementParagraph}>
+          -
+        </Button>
+      </CustomCard>
     </Box>
   )
 }

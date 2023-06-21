@@ -19,7 +19,7 @@ const TopBar = ({ title, component: Component }) => {
   const dispatch = useDispatch()
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#fff' }}>
+    <AppBar open={openState} position="fixed" sx={{ backgroundColor: '#fff' }}>
       <Container>
         <Toolbar
           sx={{
@@ -38,7 +38,7 @@ const TopBar = ({ title, component: Component }) => {
               aria-label="open drawer"
               edge="start"
               onClick={() => dispatch(setOpenState(!openState))}
-              sx={{ mr: 2 }}
+              sx={{ marginRight: 5, ...(openState && { display: 'none' }) }}
             >
               <MenuIcon />
             </IconButton>
