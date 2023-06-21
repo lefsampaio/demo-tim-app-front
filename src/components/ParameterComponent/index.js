@@ -53,7 +53,7 @@ const ParameterComponent = () => {
       >
         {tabs.map((item, index) => (
           <Tab
-            onClick={index > 1 && handleLockClick}
+            onClick={index > 2 && handleLockClick}
             key={item.title}
             label={
               <Grid container alignItems="center" spacing={1}>

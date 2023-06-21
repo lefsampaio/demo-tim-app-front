@@ -1,9 +1,6 @@
-// import { useSelector } from 'react-redux'
-
 import { tabs } from '@/utils/tabs'
 import { Box, Button, Divider, Snackbar, Typography } from '@mui/material'
 import MuiAlert from '@mui/material/Alert'
-// import RadioButtonList from '../RadioButtonList'
 import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined'
 import TimelineComponent from '../TimeLineComponent'
 import { useState } from 'react'
@@ -11,6 +8,7 @@ import { useSelector } from 'react-redux'
 import ComponenteToneVoice from '../ComponenteToneVoice'
 import ComponenteCreativityTemperature from '../ComponenteCreativityTemperature'
 import ModalComponent from '../ModalComponent'
+import ComponenteCharacterLimit from '../ComponenteCharacterLimit'
 
 const TabPanel = () => {
   const selectedButton = useSelector((state) => state.tabPanel.selectedButton)
@@ -29,7 +27,7 @@ const TabPanel = () => {
   const componentMap = {
     'Tom de voz': ComponenteToneVoice,
     'Temperatura de Criatividade': ComponenteCreativityTemperature,
-    'Comprimento de Texto': ModalComponent,
+    'Comprimento de Texto': ComponenteCharacterLimit,
     Playground: ModalComponent,
     'Público alvo': ModalComponent,
     'Palavras-chave': ModalComponent,
