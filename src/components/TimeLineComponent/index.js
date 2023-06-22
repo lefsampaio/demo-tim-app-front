@@ -1,4 +1,3 @@
-import { inputState } from '@/store/campaignSlice'
 import { Timeline } from '@mui/lab'
 import { Box, Typography } from '@mui/material'
 import React from 'react'
@@ -6,25 +5,8 @@ import { useSelector } from 'react-redux'
 import renderTimelineItem from './renderTimelineItem'
 
 const TimelineComponent = () => {
-  const inputs = useSelector(inputState)
-
-  const timelineData = {
-    name: inputs.name,
-    description: 'Descrição da campanha',
-    campaignChannel: inputs.campaignChannel,
-    toneVoice: inputs.toneVoice,
-    creativityTemperature: inputs.creativityTemperature,
-    characterLimit: inputs.characterLimit,
-    paragraphs: inputs.paragraphs,
-    playground: inputs.playground,
-    targetAudience: inputs.targetAudience,
-    keyWords: inputs.keyWords,
-    mentalTriggers: inputs.mentalTriggers,
-    link: inputs.link,
-    useEmojis: inputs.useEmojis,
-    hashtag: inputs.hashtag,
-    author: 'Leticia Sampaio',
-  }
+  const isSaved = useSelector((state) => state.campaigns.isSaved)
+  const timelineData = useSelector((state) => state.campaigns.timelineData)
 
   return (
     <>
@@ -35,55 +17,67 @@ const TimelineComponent = () => {
         Resumo de parâmetros personalizados
       </Typography>
       <Box sx={{ overflow: 'auto', maxHeight: '45vh' }}>
-        <Timeline sx={{ display: 'grid' }}>
-          {renderTimelineItem(
-            'Canal',
-            timelineData.campaignChannel === 'EMKT'
-              ? 'Email Marketing'
-              : timelineData.campaignChannel,
-          )}
-          {renderTimelineItem('Tom de Voz', timelineData.toneVoice)}
-          {renderTimelineItem(
-            'Temperatura de Criatividade',
-            timelineData.creativityTemperature !== undefined
-              ? `${timelineData.creativityTemperature.toString()} º`
-              : undefined,
-          )}
-          {renderTimelineItem(
-            'Comprimento de texto',
-            timelineData.characterLimit !== undefined ||
-              timelineData.paragraphs !== undefined
-              ? `Caracteres: ${timelineData.characterLimit}/Parágrafos: ${timelineData.paragraphs}`
-              : undefined,
-          )}
-          {renderTimelineItem('Playground', timelineData.playground)}
-          {renderTimelineItem('Público-alvo', timelineData.targetAudience)}
-          {renderTimelineItem('Palavras-chave', timelineData.keyWords)}
-          {renderTimelineItem(
-            'Gatilhos Mentais',
-            timelineData.mentalTriggers?.map((trigger, index) => (
-              <Typography sx={{ fontSize: '14px' }} key={index}>
-                {trigger};
-              </Typography>
-            )),
-          )}
-          {renderTimelineItem(
-            'Link',
-            <a
-              style={{ color: 'neutral.main' }}
-              href={timelineData.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {timelineData.link}
-            </a>,
-          )}
-          {renderTimelineItem(
-            'Utilizar Emojis',
-            timelineData.useEmojis ? 'Sim, utilizar emojis' : 'Não, sem emojis',
-          )}
-          {renderTimelineItem('Hashtags', timelineData.hashtag)}
-        </Timeline>
+        {isSaved && (
+          <Timeline sx={{ display: 'grid' }}>
+            {timelineData.campaignChannel &&
+              renderTimelineItem(
+                'Canal',
+                timelineData.campaignChannel === 'EMKT'
+                  ? 'Email Marketing'
+                  : timelineData.campaignChannel,
+              )}
+            {timelineData.toneVoice &&
+              renderTimelineItem('Tom de Voz', timelineData.toneVoice)}
+            {timelineData.creativityTemperature !== undefined &&
+              renderTimelineItem(
+                'Temperatura de Criatividade',
+                `${timelineData.creativityTemperature.toString()} º`,
+              )}
+            {(timelineData.characterLimit !== undefined ||
+              timelineData.paragraphs !== undefined) &&
+              renderTimelineItem(
+                'Comprimento de texto',
+                `Caracteres: ${timelineData.characterLimit || ''}/Parágrafos: ${
+                  timelineData.paragraphs || ''
+                }`,
+              )}
+            {timelineData.playground &&
+              renderTimelineItem('Playground', timelineData.playground)}
+            {timelineData.targetAudience &&
+              renderTimelineItem('Público-alvo', timelineData.targetAudience)}
+            {timelineData.keyWords &&
+              renderTimelineItem('Palavras-chave', timelineData.keyWords)}
+            {timelineData.mentalTriggers?.length > 0 &&
+              renderTimelineItem(
+                'Gatilhos Mentais',
+                timelineData.mentalTriggers?.map((trigger, index) => (
+                  <Typography sx={{ fontSize: '14px' }} key={index}>
+                    {trigger};
+                  </Typography>
+                )),
+              )}
+            {timelineData.link &&
+              renderTimelineItem(
+                'Link',
+                <a
+                  style={{ color: 'neutral.main' }}
+                  href={timelineData.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {timelineData.link}
+                </a>,
+              )}
+            {renderTimelineItem(
+              'Utilizar Emojis',
+              timelineData.useEmojis
+                ? 'Sim, utilizar emojis'
+                : 'Não, sem emojis',
+            )}
+            {timelineData.hashtag &&
+              renderTimelineItem('Hashtags', timelineData.hashtag)}
+          </Timeline>
+        )}
       </Box>
     </>
   )

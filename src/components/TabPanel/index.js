@@ -4,10 +4,9 @@ import MuiAlert from '@mui/material/Alert'
 import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined'
 import TimelineComponent from '../TimeLineComponent'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ComponenteToneVoice from '../ComponenteToneVoice'
 import ComponenteCreativityTemperature from '../ComponenteCreativityTemperature'
-import ModalComponent from '../ModalComponent'
 import ComponenteCharacterLimit from '../ComponenteCharacterLimit'
 import ComponentePlayground from '../ComponentePlayground'
 import ComponenteTargetAudience from '../ComponenteTargetAudience'
@@ -16,13 +15,16 @@ import ComponenteMentalTriggers from '../ComponenteMentalTriggers'
 import ComponenteLink from '../ComponenteLink'
 import ComponenteEmoji from '../ComponenteEmoji'
 import ComponenteHashtags from '../ComponenteHashtags'
+import { saveParameters } from '@/store/campaignSlice'
 
 const TabPanel = () => {
   const selectedButton = useSelector((state) => state.tabPanel.selectedButton)
   const [open, setOpen] = useState(false)
+  const dispatch = useDispatch()
 
   const handleClick = () => {
     setOpen(true)
+    dispatch(saveParameters())
   }
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {

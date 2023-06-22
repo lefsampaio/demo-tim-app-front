@@ -7,24 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const StepButtons = () => {
   const inputs = useSelector(inputState)
-
-  const timelineData = {
-    name: inputs.name,
-    description: 'Descrição da campanha',
-    campaignChannel: inputs.campaignChannel,
-    toneVoice: inputs.toneVoice,
-    creativityTemperature: inputs.creativityTemperature,
-    characterLimit: inputs.characterLimit,
-    paragraphs: inputs.paragraphs,
-    playground: inputs.playground,
-    targetAudience: inputs.targetAudience,
-    keyWords: inputs.keyWords,
-    mentalTriggers: inputs.mentalTriggers,
-    link: inputs.link,
-    useEmojis: inputs.useEmojis,
-    hashtag: '#Tim; #RockinRio; #TimControle; #FestivaldeMúsica',
-    author: 'Leticia Sampaio',
-  }
+  const timelineData = useSelector((state) => state.campaigns.timelineData)
 
   const activeStep = useSelector((state) => state.step.value)
   const dispatch = useDispatch()
