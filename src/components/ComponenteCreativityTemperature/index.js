@@ -4,7 +4,7 @@ import { addCampaign } from '@/store/campaignSlice'
 import { useDispatch } from 'react-redux'
 
 const ComponenteCreativityTemperature = () => {
-  const [temperature, setTemperature] = useState(8.5)
+  const [temperature, setTemperature] = useState(0)
 
   const dispatch = useDispatch()
 

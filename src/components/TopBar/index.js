@@ -17,11 +17,7 @@ const TopBar = ({ title, component: Component }) => {
   const openState = useSelector(selectOpenState)
 
   return (
-    <AppBar
-      open={openState}
-      position="fixed"
-      sx={{ backgroundColor: '#fff', mb: 12 }}
-    >
+    <AppBar open={openState} position="fixed" sx={{ backgroundColor: '#fff' }}>
       <Container>
         <Toolbar
           sx={{

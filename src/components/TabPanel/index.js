@@ -9,6 +9,12 @@ import ComponenteToneVoice from '../ComponenteToneVoice'
 import ComponenteCreativityTemperature from '../ComponenteCreativityTemperature'
 import ModalComponent from '../ModalComponent'
 import ComponenteCharacterLimit from '../ComponenteCharacterLimit'
+import ComponentePlayground from '../ComponentePlayground'
+import ComponenteTargetAudience from '../ComponenteTargetAudience'
+import ComponenteKeyWords from '../ComponenteKeyWords'
+import ComponenteMentalTriggers from '../ComponenteMentalTriggers'
+import ComponenteLink from '../ComponenteLink'
+import ComponenteEmoji from '../ComponenteEmoji'
 
 const TabPanel = () => {
   const selectedButton = useSelector((state) => state.tabPanel.selectedButton)
@@ -28,17 +34,17 @@ const TabPanel = () => {
     'Tom de voz': ComponenteToneVoice,
     'Temperatura de Criatividade': ComponenteCreativityTemperature,
     'Comprimento de Texto': ComponenteCharacterLimit,
-    Playground: ModalComponent,
-    'Público alvo': ModalComponent,
-    'Palavras-chave': ModalComponent,
-    'Gatilhos mentais': ModalComponent,
-    Link: ModalComponent,
-    Emoji: ModalComponent,
+    Playground: ComponentePlayground,
+    'Público alvo': ComponenteTargetAudience,
+    'Palavras-chave': ComponenteKeyWords,
+    'Gatilhos mentais': ComponenteMentalTriggers,
+    Link: ComponenteLink,
+    Emoji: ComponenteEmoji,
     Hashtags: ModalComponent,
   }
   const Component = componentMap[selectedButton]
   return (
-    <Box width="35vw">
+    <Box minHeight="110vh" width="35vw">
       {tabs.map((item, index) => (
         <Box key={index}>
           {selectedButton === item.title && (

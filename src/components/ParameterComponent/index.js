@@ -1,25 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Grid, Tab, Tabs, Typography } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSelectedButton } from '@/store/tabPanelSlice'
 import { tabs } from '@/utils/tabs'
-import LockIcon from '@mui/icons-material/Lock'
-import ModalComponent from '../ModalComponent'
 
 const ParameterComponent = () => {
   const selectedButton = useSelector((state) => state.tabPanel.selectedButton)
-  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const handleLockClick = () => {
-    setIsModalOpen(true)
-  }
   const dispatch = useDispatch()
 
   const handleTabChange = (event, newValue) => {
     dispatch(setSelectedButton(newValue))
-  }
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
   }
 
   return (
@@ -51,13 +42,12 @@ const ParameterComponent = () => {
         onChange={handleTabChange}
         aria-label="selectable buttons"
       >
-        {tabs.map((item, index) => (
+        {tabs.map((item) => (
           <Tab
-            onClick={index > 2 && handleLockClick}
             key={item.title}
             label={
               <Grid container alignItems="center" spacing={1}>
-                <Grid item>{index > 2 && <LockIcon />}</Grid>
+                <Grid item>{item.icon}</Grid>
                 <Grid item>{item.title}</Grid>
               </Grid>
             }
@@ -86,11 +76,6 @@ const ParameterComponent = () => {
             }}
           />
         ))}
-        <ModalComponent
-          open={isModalOpen}
-          onClose={handleCloseModal}
-          onClick={handleCloseModal}
-        />
       </Tabs>
     </>
   )

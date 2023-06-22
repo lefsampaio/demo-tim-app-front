@@ -3,15 +3,7 @@ import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-const RadioButtonList = () => {
-  const options = [
-    'Formal',
-    'Amigável',
-    'Divertido',
-    'Informal',
-    'Profissional',
-    'Natural',
-  ]
+const RadioButtonList = ({ options, type }) => {
   const [radio, setRadio] = useState('')
   const dispatch = useDispatch()
 
@@ -27,9 +19,10 @@ const RadioButtonList = () => {
           display: 'grid',
           gridTemplateColumns: '1fr 1fr 1fr',
           width: '35vw',
+          gap: 2,
         }}
         value={radio}
-        onChange={(event) => handleItemClick('toneVoice', event.target.value)}
+        onChange={(event) => handleItemClick(type, event.target.value)}
       >
         {options.map((option, index) => (
           <FormControlLabel

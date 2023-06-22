@@ -7,7 +7,7 @@ import renderTimelineItem from './renderTimelineItem'
 
 const TimelineComponent = () => {
   const inputs = useSelector(inputState)
-
+  console.log(inputs.useEmojis)
   const timelineData = {
     name: inputs.name,
     description: 'Descrição da campanha',
@@ -16,13 +16,12 @@ const TimelineComponent = () => {
     creativityTemperature: inputs.creativityTemperature,
     characterLimit: inputs.characterLimit,
     paragraphs: inputs.paragraphs,
-    // playground:
-    //   'Texto divertido e próximo do consumidor, sem uso de palavras complicadas e termos técnicos, voltado para jovens universitários que gostam de música e gostariam de ir ao Rock in Rio',
-    // targetAudience: 'Clientes TIM Pré.',
-    // keyWords: 'Plano; Promoção; Tim; Streaming; Dados; Tim Controle',
-    // mentalTriggers: ['Escassez;', 'Confiança'],
-    // link: 'https://bit.ly/45pjiVs',
-    // useEmojis: true,
+    playground: inputs.playground,
+    targetAudience: inputs.targetAudience,
+    keyWords: inputs.keyWords,
+    mentalTriggers: inputs.mentalTriggers,
+    link: inputs.link,
+    useEmojis: inputs.useEmojis,
     // hashtag: '#Tim; #RockinRio; #TimControle; #FestivaldeMúsica',
     // author: 'Leticia Sampaio',
   }
@@ -35,7 +34,7 @@ const TimelineComponent = () => {
       >
         Resumo de parâmetros personalizados
       </Typography>
-      <Box sx={{ overflow: 'auto', maxHeight: '35vh' }}>
+      <Box sx={{ overflow: 'auto', maxHeight: '45vh' }}>
         <Timeline sx={{ display: 'grid' }}>
           {renderTimelineItem(
             'Canal',
@@ -64,18 +63,25 @@ const TimelineComponent = () => {
             'Gatilhos Mentais',
             timelineData.mentalTriggers?.map((trigger, index) => (
               <Typography sx={{ fontSize: '14px' }} key={index}>
-                {trigger}
+                {trigger};
               </Typography>
             )),
           )}
           {renderTimelineItem(
             'Link',
-            timelineData.link,
-            // <Link href={timelineData.link} target="_blank">
-
-            // </Link>,
+            <a
+              style={{ color: 'neutral.main' }}
+              href={timelineData.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {timelineData.link}
+            </a>,
           )}
-          {renderTimelineItem('Utilizar Emojis', timelineData.useEmojis)}
+          {renderTimelineItem(
+            'Utilizar Emojis',
+            timelineData.useEmojis ? 'Sim, utilizar emojis' : 'Não, sem emojis',
+          )}
           {renderTimelineItem('Hashtags', timelineData.hashtag)}
         </Timeline>
       </Box>

@@ -38,7 +38,7 @@ const Results = () => {
       {loading ? (
         <LoadingScreen />
       ) : (
-        <List>
+        <List sx={{ overflow: 'auto', maxHeight: '72vh' }}>
           {items.generatedContent.generatedContent?.map((item) => (
             <Box key={item?.id}>
               <ListItem pl={0} alignItems="flex-start">

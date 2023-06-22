@@ -1,57 +1,69 @@
+import { SvgIcon } from '@mui/material'
+import { ReactComponent as ToneVoiceIcon } from '../../public/images/icons/tonevoice.svg'
+import { ReactComponent as MentalTriggers } from '../../public/images/icons/gatilhosmentais.svg'
+
 export const tabs = [
   {
     field: 'toneVoice',
     title: 'Tom de voz',
-    value: 'Formal',
+    icon: <SvgIcon component={ToneVoiceIcon} />,
     description: 'Defina a linguagem e o estilo de comunicação.',
   },
   {
     field: 'creativityTemperature',
     title: 'Temperatura de Criatividade',
-    value: 5,
+    icon: '',
     description:
       'Ajuste o nível de variação nas respostas geradas pela Inteligência Artificial.',
   },
   {
     field: 'characterLimit',
     title: 'Comprimento de Texto',
-    value: 116,
+    icon: '',
     description:
       'Ajuste o comprimento do texto de acordo com as limitações do canal selecionado.',
   },
   {
     field: 'playground',
     title: 'Playground',
-    value: 116,
+    icon: '',
+    description:
+      'Adicione parâmetros personalizados de acordo com as necessidades da campanha. Seja criativo!',
   },
   {
     field: 'targetAudience',
     title: 'Público alvo',
-    value: 116,
+    icon: '',
+    description: 'Selecione o público-alvo definido para a campanha.',
   },
   {
     field: 'keyWords',
     title: 'Palavras-chave',
-    value: 116,
+    icon: '',
+    description: 'Insira as palavras-chave definidas para a campanha.',
   },
   {
     field: 'mentalTriggers',
     title: 'Gatilhos mentais',
-    value: 116,
+    icon: MentalTriggers,
+    description:
+      'Adicione elementos que estimulam emoções e promovem maior engajamento do público-alvo.',
   },
   {
     field: 'link',
     title: 'Link',
-    value: 116,
+    icon: '',
+    description:
+      'Insira o link da campanha. Será utilizado o link curto no conteúdo gerado.',
   },
   {
     field: 'useEmojis',
     title: 'Emoji',
-    value: 116,
+    icon: '',
   },
   {
     field: 'hashtag',
     title: 'Hashtags',
-    value: 116,
+    icon: '',
   },
 ]

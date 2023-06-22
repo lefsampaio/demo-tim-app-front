@@ -10,7 +10,6 @@ const CustomCard = styled(Card)(({ theme, selected }) => ({
   border: `1px solid ${theme.palette.customBlue.main}`,
   minHeight: '88px',
   padding: '24px',
-  marginBottom: '24px',
   borderRadius: '16px',
   textTransform: 'none',
   textAlign: 'left',

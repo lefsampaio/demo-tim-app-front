@@ -9,11 +9,7 @@ import CanalLeftSide from '../CanalLeftSide'
 import ParameterComponent from '../ParameterComponent'
 import Results from '../Results'
 
-const StepForm = ({
-  SelectItems,
-  component: Component,
-  stepButtons: StepButtons,
-}) => {
+const StepForm = ({ stepButtons: StepButtons }) => {
   const inputValues = useSelector(inputState)
   const activeStep = useSelector((state) => state.step.value)
   return (
@@ -58,7 +54,6 @@ const StepForm = ({
           <Grid mt={12} item xs={12} md={6} sx={{ alignContent: 'center' }}>
             <Box
               sx={{
-                display: activeStep === 2 ? 'grid' : 'flex',
                 ml: '60px',
               }}
             >
