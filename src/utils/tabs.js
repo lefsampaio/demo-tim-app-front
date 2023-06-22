@@ -65,5 +65,6 @@ export const tabs = [
     field: 'hashtag',
     title: 'Hashtags',
     icon: '',
+    description: 'Insira as hashtags definidas para a campanha.',
   },
 ]

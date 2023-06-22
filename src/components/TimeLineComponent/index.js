@@ -7,7 +7,7 @@ import renderTimelineItem from './renderTimelineItem'
 
 const TimelineComponent = () => {
   const inputs = useSelector(inputState)
-  console.log(inputs.useEmojis)
+
   const timelineData = {
     name: inputs.name,
     description: 'Descrição da campanha',
@@ -22,8 +22,8 @@ const TimelineComponent = () => {
     mentalTriggers: inputs.mentalTriggers,
     link: inputs.link,
     useEmojis: inputs.useEmojis,
-    // hashtag: '#Tim; #RockinRio; #TimControle; #FestivaldeMúsica',
-    // author: 'Leticia Sampaio',
+    hashtag: inputs.hashtag,
+    author: 'Leticia Sampaio',
   }
 
   return (

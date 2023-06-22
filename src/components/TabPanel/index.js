@@ -15,6 +15,7 @@ import ComponenteKeyWords from '../ComponenteKeyWords'
 import ComponenteMentalTriggers from '../ComponenteMentalTriggers'
 import ComponenteLink from '../ComponenteLink'
 import ComponenteEmoji from '../ComponenteEmoji'
+import ComponenteHashtags from '../ComponenteHashtags'
 
 const TabPanel = () => {
   const selectedButton = useSelector((state) => state.tabPanel.selectedButton)
@@ -40,7 +41,7 @@ const TabPanel = () => {
     'Gatilhos mentais': ComponenteMentalTriggers,
     Link: ComponenteLink,
     Emoji: ComponenteEmoji,
-    Hashtags: ModalComponent,
+    Hashtags: ComponenteHashtags,
   }
   const Component = componentMap[selectedButton]
   return (

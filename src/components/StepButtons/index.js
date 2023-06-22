@@ -22,8 +22,8 @@ const StepButtons = () => {
     mentalTriggers: inputs.mentalTriggers,
     link: inputs.link,
     useEmojis: inputs.useEmojis,
-    // hashtag: '#Tim; #RockinRio; #TimControle; #FestivaldeMúsica',
-    // author: 'Leticia Sampaio',
+    hashtag: '#Tim; #RockinRio; #TimControle; #FestivaldeMúsica',
+    author: 'Leticia Sampaio',
   }
 
   const activeStep = useSelector((state) => state.step.value)
