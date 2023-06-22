@@ -12,20 +12,20 @@ const StepButtons = () => {
     name: inputs.name,
     description: 'Descrição da campanha',
     campaignChannel: inputs.campaignChannel,
-    toneVoice: 'Divertido',
-    creativityTemperature: 8.5,
-    characterLimit: 250,
-    paragraphs: 1,
-    playground:
-      'Texto divertido e próximo do consumidor, sem uso de palavras complicadas e termos técnicos, voltado para jovens universitários que gostam de música e gostariam de ir ao Rock in Rio',
-    targetAudience: 'Clientes TIM Pré.',
-    keyWords: 'Plano; Promoção; Tim; Streaming; Dados; Tim Controle',
-    mentalTriggers: ['Escassez;', 'Confiança'],
-    link: 'https://bit.ly/45pjiVs',
-    useEmojis: true,
-    hashtag: '#Tim; #RockinRio; #TimControle; #FestivaldeMúsica',
-    author: 'Fulano da Silva',
+    toneVoice: inputs.toneVoice,
+    creativityTemperature: inputs.creativityTemperature,
+    characterLimit: inputs.characterLimit,
+    paragraphs: inputs.paragraphs,
+    playground: inputs.playground,
+    targetAudience: inputs.targetAudience,
+    keyWords: inputs.keyWords,
+    mentalTriggers: inputs.mentalTriggers,
+    link: inputs.link,
+    useEmojis: inputs.useEmojis,
+    // hashtag: '#Tim; #RockinRio; #TimControle; #FestivaldeMúsica',
+    // author: 'Leticia Sampaio',
   }
+
   const activeStep = useSelector((state) => state.step.value)
   const dispatch = useDispatch()
 
