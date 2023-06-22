@@ -64,10 +64,11 @@ const DashBoard = () => {
   return (
     <>
       <TopBar title="Painel" />
-      <Container sx={{ mt: 12 }}>
+      <Container>
         <Typography
           component="h1"
-          mb={10}
+          mt={10}
+          mb={4}
           sx={{
             fontSize: '32px',
             fontWeight: '700',
@@ -263,7 +264,8 @@ const DashBoard = () => {
             display: 'flex',
             justifyContent: { md: 'space-between', xs: 'center' },
             flexDirection: { md: 'row', xs: 'column' },
-            mt: 8,
+            mt: 2,
+            mb: 2,
             alignItems: 'center',
           }}
         >

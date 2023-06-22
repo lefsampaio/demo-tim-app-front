@@ -33,7 +33,7 @@ const ParameterComponent = () => {
       >
         Parametrização
       </Typography>
-      <Typography color="lighter.main" sx={{ mr: 8, mb: 8 }}>
+      <Typography color="lighter.main" sx={{ mr: 8, mb: 5 }}>
         Configure os parâmetros de acordo com a sua necessidade.
       </Typography>
       <Tabs
@@ -57,9 +57,7 @@ const ParameterComponent = () => {
             key={item.title}
             label={
               <Grid container alignItems="center" spacing={1}>
-                <Grid item>
-                  <LockIcon />
-                </Grid>
+                <Grid item>{index > 2 && <LockIcon />}</Grid>
                 <Grid item>{item.title}</Grid>
               </Grid>
             }
@@ -68,7 +66,7 @@ const ParameterComponent = () => {
               borderRadius: '16px',
               height: '72px',
               textTransform: 'none',
-              width: '290px',
+              maxWidth: '250px',
               color: 'neutral.main',
               border: '1px solid #D8D8D8',
               backgroundColor:

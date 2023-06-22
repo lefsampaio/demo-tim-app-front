@@ -8,7 +8,8 @@ import { addCampaign } from '@/store/campaignSlice'
 import { useDispatch } from 'react-redux'
 
 const CustomCard = styled(Button)(({ theme, selected }) => ({
-  width: '687px',
+  minWidth: '500px',
+  maxWidth: '687px',
   border: `1px solid ${theme.palette.customBlue.main}`,
   minHeight: '144px',
   padding: '8px 8px 0 8px',
@@ -57,7 +58,7 @@ const CardList = () => {
   }
 
   return (
-    <Box id="éaquitio" justifyContent="center">
+    <Box justifyContent="center">
       <Box maxWidth="600px">
         {cardsData.map((card) => (
           <CustomCard

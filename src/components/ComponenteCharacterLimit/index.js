@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import { Box, Button, Card, styled } from '@mui/material'
+import { Box, Button, Card, Typography, styled } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { addCampaign } from '@/store/campaignSlice'
 
 const CustomCard = styled(Card)(({ theme, selected }) => ({
   width: '252px',
+  display: 'grid',
+  gridTemplateColumns: '2fr 1fr',
   border: `1px solid ${theme.palette.customBlue.main}`,
   minHeight: '88px',
-  padding: '8px 8px 0 8px',
+  padding: '24px',
   marginBottom: '24px',
   borderRadius: '16px',
   textTransform: 'none',
@@ -17,61 +19,87 @@ const CustomCard = styled(Card)(({ theme, selected }) => ({
   backgroundColor: 'transparent',
   color: 'inherit',
 }))
+const StyledButton = styled(Button)({
+  minWidth: '24px',
+  width: '24px',
+  height: '24px',
+  borderRadius: '50%',
+  padding: '0',
+  fontSize: '14px',
+  lineHeight: '1',
+})
 
 const ComponenteCharacterLimit = () => {
   const [character, setCharacter] = useState(0)
   const [paragraph, setParagraph] = useState(0)
   const dispatch = useDispatch()
+
   const incrementCharacter = () => {
     if (character < 150) {
       setCharacter(character + 1)
+      dispatch(addCampaign({ characterLimit: character + 1 }))
     }
   }
 
   const decrementCharacter = () => {
     if (character > 0) {
       setCharacter(character - 1)
+      dispatch(addCampaign({ characterLimit: character - 1 }))
     }
   }
 
   const incrementParagraph = () => {
     if (paragraph < 3) {
       setParagraph(paragraph + 1)
+      dispatch(addCampaign({ paragraphs: paragraph + 1 }))
     }
   }
 
-  const decrementParagraph = (key, value) => {
+  const decrementParagraph = () => {
     if (paragraph > 0) {
       setParagraph(paragraph - 1)
-      dispatch(addCampaign({ [key]: value }))
+      dispatch(addCampaign({ paragraphs: paragraph - 1 }))
     }
   }
 
-  // const handleTemperatureChange = (key, value) => {
-  //   dispatch(addCampaign({ [key]: value }))
-  //   setTemperature(value)
-  // }
-
   return (
-    <Box width="35vw">
+    <Box width="35vw" display="grid" gridTemplateColumns="1fr 0fr 1fr">
       <CustomCard>
-        <Button variant="contained" onClick={incrementCharacter}>
-          +
-        </Button>
-        <span>{character}</span>
-        <Button variant="contained" onClick={decrementCharacter}>
-          -
-        </Button>
+        <Box>
+          <Typography variant="h3" fontWeight="700" fontSize="14px">
+            Caracteres
+          </Typography>
+          <Typography fontWeight="400" fontSize="20px">
+            {character}
+          </Typography>
+        </Box>
+        <Box display="flex" justifyContent="space-around">
+          <StyledButton variant="contained" onClick={incrementCharacter}>
+            +
+          </StyledButton>
+          <StyledButton variant="contained" onClick={decrementCharacter}>
+            -
+          </StyledButton>
+        </Box>
       </CustomCard>
       <br />
       <CustomCard>
-        <Button variant="contained" onClick={incrementParagraph}>
-          +
-        </Button>
-        <span>{paragraph}</span>
-        <Button variant="contained" onClick={decrementParagraph}>
-          -
-        </Button>
+        <Box>
+          <Typography variant="h3" fontWeight="700" fontSize="14px">
+            Parágrafos
+          </Typography>
+          <Typography fontWeight="400" fontSize="20px">
+            {paragraph}
+          </Typography>
+        </Box>
+        <Box display="flex" justifyContent="space-around">
+          <StyledButton variant="contained" onClick={incrementParagraph}>
+            +
+          </StyledButton>
+          <StyledButton variant="contained" onClick={decrementParagraph}>
+            -
+          </StyledButton>
+        </Box>
       </CustomCard>
     </Box>
   )

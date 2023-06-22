@@ -23,7 +23,11 @@ const RadioButtonList = () => {
   return (
     <>
       <RadioGroup
-        sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr 1fr',
+          width: '35vw',
+        }}
         value={radio}
         onChange={(event) => handleItemClick('toneVoice', event.target.value)}
       >

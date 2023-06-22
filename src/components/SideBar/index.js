@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Drawer, IconButton, List, Toolbar, useTheme } from '@mui/material'
+import { Box, Drawer, List, Toolbar } from '@mui/material'
 import { styled } from '@mui/system'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectOpenState, setOpenState } from '@/store/openSlice'
@@ -56,11 +56,12 @@ const DrawerCustom = styled(Drawer, {
 const Sidebar = () => {
   const dispatch = useDispatch()
   const openState = useSelector(selectOpenState)
-  const theme = useTheme()
 
   return (
     <Box>
       <DrawerCustom
+        onMouseEnter={() => dispatch(setOpenState(!openState))}
+        onMouseLeave={() => dispatch(setOpenState(!openState))}
         variant="permanent"
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
@@ -68,20 +69,17 @@ const Sidebar = () => {
         open={openState}
       >
         <DrawerPaper>
-          <Toolbar sx={{ mt: 4, mx: 5 }}>
-            <Image
-              src="/images/logo-tim.png"
-              width={121}
-              height={32}
-              alt="logo da TIM"
-            />
-            <div>
-              <IconButton onClick={() => dispatch(setOpenState(!openState))}>
-                {theme.direction === 'rtl' ? '>' : '<'}
-              </IconButton>
-            </div>
+          <Toolbar sx={{ mt: 2, paddingLeft: '15px !important' }}>
+            <Box alignSelf="self-end">
+              <Image
+                src="/images/logo-tim.png"
+                width={121}
+                height={32}
+                alt="logo da TIM"
+              />
+            </Box>
           </Toolbar>
-          <List sx={{ mt: 15 }} component="nav">
+          <List sx={{ mt: 10 }} component="nav">
             <SideMenuList />
           </List>
           <Profile />

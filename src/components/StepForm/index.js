@@ -24,10 +24,10 @@ const StepForm = ({
           {/* Parte esquerda */}
           <Grid
             item
+            mt={3}
             xs={12}
-            md={activeStep === 2 ? 6 : 7}
+            md={6}
             sx={{
-              minHeight: '90vh',
               display: 'flex',
               flexDirection: 'column',
               boxShadow: '8px 0 6px -2px rgba(0, 0, 0, 0.1)',
@@ -52,21 +52,14 @@ const StepForm = ({
                 ]}
               />
             )}
-            {/* {SelectItems && <SelectItems leftSide={Component} />} */}
           </Grid>
 
           {/* Parte direita */}
-          <Grid
-            item
-            xs={12}
-            md={activeStep === 2 ? 6 : 4}
-            sx={{ alignContent: 'center' }}
-          >
+          <Grid mt={12} item xs={12} md={6} sx={{ alignContent: 'center' }}>
             <Box
               sx={{
                 display: activeStep === 2 ? 'grid' : 'flex',
-                mt: 8,
-                ml: activeStep === 2 ? '60px' : '121px',
+                ml: '60px',
               }}
             >
               {activeStep === 0 && <CardList />}
@@ -77,6 +70,7 @@ const StepForm = ({
           {/* Barra inferior */}
           <Grid item xs={12}>
             <AppBar
+              role="footer"
               position="fixed"
               sx={{ backgroundColor: '#fff', top: 'auto', bottom: 0 }}
             >

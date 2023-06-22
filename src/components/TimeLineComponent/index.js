@@ -15,7 +15,7 @@ const TimelineComponent = () => {
     toneVoice: inputs.toneVoice,
     creativityTemperature: inputs.creativityTemperature,
     characterLimit: inputs.characterLimit,
-    // paragraphs: 1,
+    paragraphs: inputs.paragraphs,
     // playground:
     //   'Texto divertido e próximo do consumidor, sem uso de palavras complicadas e termos técnicos, voltado para jovens universitários que gostam de música e gostariam de ir ao Rock in Rio',
     // targetAudience: 'Clientes TIM Pré.',
@@ -54,7 +54,7 @@ const TimelineComponent = () => {
             'Comprimento de texto',
             timelineData.characterLimit !== undefined ||
               timelineData.paragraphs !== undefined
-              ? `Caracteres: ${timelineData.characterLimit.toString()}/Parágrafos: ${timelineData.paragraphs.toString()}`
+              ? `Caracteres: ${timelineData.characterLimit}/Parágrafos: ${timelineData.paragraphs}`
               : undefined,
           )}
           {renderTimelineItem('Playground', timelineData.playground)}

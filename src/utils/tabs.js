@@ -16,6 +16,8 @@ export const tabs = [
     field: 'characterLimit',
     title: 'Comprimento de Texto',
     value: 116,
+    description:
+      'Ajuste o comprimento do texto de acordo com as limitações do canal selecionado.',
   },
   {
     field: 'playground',

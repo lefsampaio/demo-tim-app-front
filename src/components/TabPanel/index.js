@@ -38,11 +38,11 @@ const TabPanel = () => {
   }
   const Component = componentMap[selectedButton]
   return (
-    <Box>
+    <Box width="35vw">
       {tabs.map((item, index) => (
-        <Box sx={{ mb: '70px' }} key={index}>
+        <Box key={index}>
           {selectedButton === item.title && (
-            <Box sx={{ maxHeight: '90vh' }}>
+            <Box>
               <Typography
                 variant="h2"
                 gutterBottom
@@ -53,13 +53,16 @@ const TabPanel = () => {
                   color: 'neutral.main',
                 }}
               >
-                {' '}
                 {item.title}
               </Typography>
               <Typography
-                sx={{ fontSize: '16px', color: 'lighter.main', mr: 8, mb: 8 }}
+                sx={{
+                  fontSize: '16px',
+                  maxWidth: '550px',
+                  color: 'lighter.main',
+                  mb: 3,
+                }}
               >
-                {' '}
                 {item.description}
               </Typography>
               <Component />
@@ -90,8 +93,9 @@ const TabPanel = () => {
           fontSize: '16px',
           width: '35vw',
           height: '56px',
+          mt: '15px',
           borderRadius: '8px',
-          mb: '40px',
+          mb: 2,
           '&:hover': {
             backgroundColor: 'customBlue.main',
             color: '#fff',
