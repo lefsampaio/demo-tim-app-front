@@ -5,16 +5,16 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material'
-import LogoutIcon from '@mui/icons-material/Logout'
-import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined'
-import GridViewIcon from '@mui/icons-material/GridView'
 import { styled } from '@mui/system'
 import Link from 'next/link'
+import PainelIcon from '../../../public/images/icons/painel.svg'
+import DatabaseIcon from '../../../public/images/icons/Database.svg'
+import SairIcon from '../../../public/images/icons/sair.svg'
 
 const StyledListItemButton = styled(ListItemButton)`
   &.Mui-selected {
-    background-color: rgba(0, 33, 152, 0.1);
-    color: #004691;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
   }
 `
 
@@ -34,9 +34,9 @@ const SideMenuList = () => {
         href="/painel"
       >
         <ListItemIcon>
-          <GridViewIcon sx={{ color: '#004691' }} />
+          <PainelIcon />
         </ListItemIcon>
-        <ListItemText primary="Painel" />
+        <ListItemText sx={{ color: '#fff' }} primary="Painel" />
       </StyledListItemButton>
       <StyledListItemButton
         disabled
@@ -46,16 +46,16 @@ const SideMenuList = () => {
         to="/dados"
       >
         <ListItemIcon>
-          <FactCheckOutlinedIcon sx={{ color: '#004691' }} />
+          <DatabaseIcon />
         </ListItemIcon>
-        <ListItemText primary="Base de Dados" />
+        <ListItemText sx={{ color: '#fff' }} primary="Base de Dados" />
       </StyledListItemButton>
-      <Divider />
+      <Divider sx={{ borderColor: '#fff' }} />
       <StyledListItemButton disabled>
         <ListItemIcon>
-          <LogoutIcon sx={{ color: '#004691' }} />
+          <SairIcon />
         </ListItemIcon>
-        <ListItemText primary="Sair" />
+        <ListItemText sx={{ color: '#fff' }} primary="Sair" />
       </StyledListItemButton>
     </>
   )

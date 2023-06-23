@@ -1,12 +1,12 @@
-import { Box } from '@mui/material'
+import { Container } from '@mui/material'
 import Sidebar from '../SideBar'
 
 const Layout = ({ children }) => {
   return (
-    <Box>
+    <Container>
       <Sidebar />
       {children}
-    </Box>
+    </Container>
   )
 }
 export default Layout

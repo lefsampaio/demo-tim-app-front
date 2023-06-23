@@ -21,7 +21,6 @@ const TopBar = ({ title, component: Component }) => {
       <Container>
         <Toolbar
           sx={{
-            padding: '0px !important',
             display: Component && 'grid',
             gridTemplateColumns: Component && '2fr 2fr 0fr 0fr 0fr',
           }}

@@ -10,7 +10,9 @@ const Profile = () => {
           src="/images/profile-pic.png"
         />
       </Box>
-      <Box sx={{ textAlign: 'center', alignSelf: { lg: 'end' } }}>
+      <Box
+        sx={{ color: '#fff', textAlign: 'center', alignSelf: { lg: 'end' } }}
+      >
         <Typography sx={{ fontSize: '14px', fontWeight: 'bold' }}>
           Fulano da Silva
         </Typography>

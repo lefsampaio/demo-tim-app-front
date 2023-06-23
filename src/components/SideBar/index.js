@@ -9,13 +9,14 @@ import Profile from '../Profile'
 import Image from 'next/image'
 
 const DrawerPaper = styled('div')`
-  //   background-image: url(/images/MENU-VERTICAL.png);
-  //   background-repeat: no-repeat;
-  //   background-size: cover;
+  background-image: url(/images/menu.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
   display: grid;
   grid-template-rows: 0fr 6fr 0fr;
 `
-const drawerWidth = 240
+const drawerWidth = 235
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create('width', {
@@ -72,7 +73,7 @@ const Sidebar = () => {
           <Toolbar sx={{ mt: 2, paddingLeft: '15px !important' }}>
             <Box alignSelf="self-end">
               <Image
-                src="/images/logo-tim.png"
+                src="/images/logotim.svg"
                 width={121}
                 height={32}
                 alt="logo da TIM"
