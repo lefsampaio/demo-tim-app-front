@@ -38,7 +38,7 @@ export const campaignSlice = createSlice({
         keyWords: inputValues.keyWords || '',
         mentalTriggers: inputValues.mentalTriggers || [],
         link: inputValues.link || '',
-        useEmojis: inputValues.useEmojis,
+        useEmojis: inputValues.useEmojis || null,
         hashtag: inputValues.hashtag || '',
         author: 'Leticia Sampaio',
       }

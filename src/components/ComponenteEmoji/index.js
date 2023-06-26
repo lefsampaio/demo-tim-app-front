@@ -4,14 +4,13 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 const ComponenteEmoji = () => {
-  const [useEmojis, setUseEmojis] = useState(false)
+  const [useEmojis, setUseEmojis] = useState(null)
   const dispatch = useDispatch()
 
   const handleItemClick = (event) => {
     const selectedOption = event.target.value
-    const shouldUseEmojis = selectedOption === 'Sim, utilizar emojis'
-    setUseEmojis(shouldUseEmojis)
-    dispatch(addCampaign({ useEmojis: shouldUseEmojis }))
+    setUseEmojis(selectedOption === 'true')
+    dispatch(addCampaign({ useEmojis: selectedOption === 'true' }))
   }
 
   return (
@@ -23,17 +22,17 @@ const ComponenteEmoji = () => {
           width: '35vw',
           gap: 2,
         }}
-        value={useEmojis ? 'Sim, utilizar emojis' : 'Não, sem emojis'}
+        value={useEmojis === null ? '' : String(useEmojis)}
         onChange={handleItemClick}
       >
         <FormControlLabel
-          value="Sim, utilizar emojis"
+          value="true"
           control={<Radio />}
           label="Sim, utilizar emojis"
           labelPlacement="end"
         />
         <FormControlLabel
-          value="Não, sem emojis"
+          value="false"
           control={<Radio />}
           label="Não, sem emojis"
           labelPlacement="end"

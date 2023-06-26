@@ -32,7 +32,7 @@ const DialogCampaign = () => {
   return (
     <Dialog
       PaperProps={{
-        sx: { borderRadius: '32px', minWidth: '733px' },
+        sx: { borderRadius: '32px', width: '733px', height: 'auto' },
       }}
       sx={{
         textAlign: 'center',
@@ -47,13 +47,12 @@ const DialogCampaign = () => {
           textAlign: 'left',
           color: 'neutral.main',
           mt: 4,
-          px: 6,
         }}
       >
         Informe os dados para cadastrar uma nova campanha.{' '}
       </DialogTitle>
       <DialogContent
-        sx={{ px: 7, display: 'grid', flexDirection: 'column', gap: '20px' }}
+        sx={{ display: 'grid', flexDirection: 'column', gap: '15px' }}
       >
         <TextField
           onChange={(e) => handleChange('name', e.target.value)}
@@ -63,7 +62,6 @@ const DialogCampaign = () => {
           id="name"
           label="Nome da campanha"
           type="text"
-          fullWidth
           variant="outlined"
         />
 
@@ -98,7 +96,7 @@ const DialogCampaign = () => {
             textTransform: 'none',
             fontSize: '16px',
             width: '100%',
-            mb: 10,
+            mb: 5,
             height: '56px',
             borderRadius: '8px',
           }}

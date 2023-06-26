@@ -4,18 +4,17 @@ import { styled } from '@mui/system'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectOpenState, setOpenState } from '@/store/openSlice'
 import SideMenuList from '../SideMenuList'
-
 import Profile from '../Profile'
 import Image from 'next/image'
 
-const DrawerPaper = styled('div')`
-  background-image: url(/images/menu.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
-  display: grid;
-  grid-template-rows: 0fr 6fr 0fr;
-`
+const DrawerPaper = styled('div')(({ theme, open }) => ({
+  backgroundImage: 'url(/images/menu.svg)',
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',
+  height: '100%',
+  display: 'grid',
+}))
+
 const drawerWidth = 235
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -57,6 +56,7 @@ const DrawerCustom = styled(Drawer, {
 const Sidebar = () => {
   const dispatch = useDispatch()
   const openState = useSelector(selectOpenState)
+  // const openState = true
 
   return (
     <Box>
@@ -70,7 +70,9 @@ const Sidebar = () => {
         open={openState}
       >
         <DrawerPaper>
-          <Toolbar sx={{ mt: 2, paddingLeft: '15px !important' }}>
+          <Toolbar
+            sx={{ alignSelf: 'baseline', paddingLeft: '15px !important' }}
+          >
             <Box alignSelf="self-end">
               <Image
                 src="/images/logotim.svg"
@@ -80,10 +82,10 @@ const Sidebar = () => {
               />
             </Box>
           </Toolbar>
-          <List sx={{ mt: 10 }} component="nav">
+          <List component="nav">
             <SideMenuList />
           </List>
-          <Profile />
+          <Profile expanded={openState} />
         </DrawerPaper>
       </DrawerCustom>
     </Box>
