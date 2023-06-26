@@ -11,9 +11,7 @@ const Profile = ({ expanded }) => {
             src="/images/profile-pic.png"
           />
         </Box>
-        <Box
-          sx={{ color: '#fff', textAlign: 'center', alignSelf: { lg: 'end' } }}
-        >
+        <Box sx={{ color: '#fff', textAlign: 'center', mt: 2 }}>
           <Typography sx={{ fontSize: '14px', fontWeight: 'bold' }}>
             Fulano da Silva
           </Typography>
