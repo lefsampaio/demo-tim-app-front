@@ -22,6 +22,7 @@ import { editedDate, formatDate } from '@/utils/formatDate'
 import LoadingScreen from '../Loading'
 import { useRouter } from 'next/router'
 import { selectOpenState } from '@/store/openSlice'
+import TimIcon from '../../../public/images/icons/tim.svg'
 
 const DashBoard = () => {
   const router = useRouter()
@@ -68,7 +69,8 @@ const DashBoard = () => {
       <Box
         sx={{
           mt: '90px',
-          mx: '100px',
+          ml: '100px',
+          mr: '40px',
           marginLeft: isTopBarOpen ? '250px' : '100px',
           transition: 'margin-left 0.3s ease',
         }}
@@ -155,9 +157,21 @@ const DashBoard = () => {
                       sx={{
                         display: 'grid',
                         alignItems: 'center',
-                        gridTemplateColumns: '7fr 2fr 2fr 2fr 1fr',
+                        gridTemplateColumns: ' 1fr 6fr 2fr 2fr 2fr 1fr',
                       }}
                     >
+                      <Box
+                        sx={{
+                          width: '37px',
+                          height: '37px',
+                          borderRadius: '50%',
+                          textAlign: 'center',
+                          backgroundColor: 'customBlue.main',
+                          pt: 1,
+                        }}
+                      >
+                        <TimIcon />
+                      </Box>
                       <Typography
                         sx={{
                           fontSize: '16px',
