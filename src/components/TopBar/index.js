@@ -5,7 +5,7 @@ import {
   IconButton,
   Typography,
   Badge,
-  Container,
+  Box,
 } from '@mui/material'
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
@@ -15,14 +15,20 @@ import { useSelector } from 'react-redux'
 
 const TopBar = ({ title, component: Component }) => {
   const openState = useSelector(selectOpenState)
-
   return (
-    <AppBar open={openState} position="fixed" sx={{ backgroundColor: '#fff' }}>
-      <Container>
+    <AppBar
+      open={openState}
+      position="relative"
+      sx={{ backgroundColor: '#fff' }}
+    >
+      <Box>
         <Toolbar
           sx={{
+            mx: '80px',
             display: Component && 'grid',
-            gridTemplateColumns: Component && '2fr 2fr 0fr 0fr 0fr',
+            gridTemplateColumns: Component && '2fr 4fr 0fr 0fr 0fr',
+            marginLeft: openState ? '230px' : '80px',
+            transition: 'margin-left 0.3s ease',
           }}
         >
           <Typography
@@ -51,7 +57,7 @@ const TopBar = ({ title, component: Component }) => {
             </Badge>
           </IconButton>
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   )
 }

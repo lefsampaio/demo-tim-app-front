@@ -39,11 +39,10 @@ const SideMenuList = () => {
         <ListItemText sx={{ color: '#fff' }} primary="Painel" />
       </StyledListItemButton>
       <StyledListItemButton
-        disabled
-        selected={selectedItem === 'dados'}
-        onClick={() => handleItemClick('dados')}
+        selected={selectedItem === 'database'}
+        onClick={() => handleItemClick('database')}
         component={Link}
-        to="/dados"
+        to="/database"
       >
         <ListItemIcon>
           <DatabaseIcon />

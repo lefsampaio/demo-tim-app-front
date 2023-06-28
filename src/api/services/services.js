@@ -26,3 +26,10 @@ export const deleteCampaign = async (id) => {
     console.log(e.message)
   }
 }
+export const postFile = async (data) => {
+  try {
+    return await api.post('/file/upload', data)
+  } catch (e) {
+    console.log(e.message)
+  }
+}

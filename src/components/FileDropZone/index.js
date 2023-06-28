@@ -13,6 +13,7 @@ import {
 import { styled } from '@mui/system'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import prettyBytes from 'pretty-bytes'
+import { postFile } from '@/api/services/services'
 
 const StyledDropzone = styled('div')`
   border: 2px dashed #aaa;
@@ -74,8 +75,10 @@ const FileDropzone = () => {
 
   const handleUpload = () => {
     if (file) {
-      // Aqui implementar a lógica para enviar o arquivo para o servidor
-      console.log('Arquivo enviado:', file)
+      const formData = new FormData()
+      formData.append('file', file)
+
+      postFile(formData)
     }
   }
 

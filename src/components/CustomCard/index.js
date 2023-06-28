@@ -8,10 +8,10 @@ import { addCampaign } from '@/store/campaignSlice'
 import { useDispatch } from 'react-redux'
 
 const CustomCard = styled(Button)(({ theme, selected }) => ({
-  minWidth: '500px',
-  maxWidth: '687px',
   border: `1px solid ${theme.palette.customBlue.main}`,
-  minHeight: '144px',
+  height: '144px',
+  width: 'auto',
+  minWidth: '550px',
   padding: '8px 8px 0 8px',
   marginBottom: '24px',
   borderRadius: '16px',
@@ -58,53 +58,49 @@ const CardList = () => {
   }
 
   return (
-    <Box justifyContent="center">
-      <Box maxWidth="600px">
-        {cardsData.map((card) => (
-          <CustomCard
-            key={card.value}
-            variant="outlined"
-            onClick={() => handleItemClick('campaignChannel', card.value)}
-            selected={selectedItem === card.value}
+    <Box sx={{ minHeight: '100vh' }} justifyContent="center">
+      {cardsData.map((card) => (
+        <CustomCard
+          key={card.value}
+          variant="outlined"
+          onClick={() => handleItemClick('campaignChannel', card.value)}
+          selected={selectedItem === card.value}
+        >
+          <Box
+            display="grid"
+            sx={{ gridTemplateColumns: '0fr 11fr' }}
+            alignItems="center"
+            marginBottom="8px"
           >
-            {/* <CardContent> */}
-            <Box
-              display="grid"
-              sx={{ gridTemplateColumns: '0fr 11fr' }}
-              alignItems="center"
-              marginBottom="8px"
+            <Icon
+              sx={{
+                marginRight: '8px',
+                width: '40px',
+                height: '48px',
+                color: 'customBlue.main',
+              }}
             >
-              <Icon
-                sx={{
-                  marginRight: '8px',
-                  width: '40px',
-                  height: '48px',
-                  color: 'customBlue.main',
-                }}
+              {card.icon}
+            </Icon>
+            <Box ml="24px">
+              <Typography
+                variant="h2"
+                sx={{ fontSize: '24px' }}
+                fontWeight={700}
+                color="neutral.main"
               >
-                {card.icon}
-              </Icon>
-              <Box ml="24px">
-                <Typography
-                  variant="h2"
-                  sx={{ fontSize: '24px' }}
-                  fontWeight={700}
-                  color="neutral.main"
-                >
-                  {card.title}
-                </Typography>
-                <Typography
-                  sx={{ fontSize: '14px', maxWidth: '450px' }}
-                  color="lighter.main"
-                >
-                  {card.subtitle}
-                </Typography>
-              </Box>
+                {card.title}
+              </Typography>
+              <Typography
+                sx={{ fontSize: '14px', maxWidth: '450px' }}
+                color="lighter.main"
+              >
+                {card.subtitle}
+              </Typography>
             </Box>
-            {/* </CardContent> */}
-          </CustomCard>
-        ))}
-      </Box>
+          </Box>
+        </CustomCard>
+      ))}
     </Box>
   )
 }

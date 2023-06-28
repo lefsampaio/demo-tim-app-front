@@ -7,7 +7,7 @@ import SideMenuList from '../SideMenuList'
 import Profile from '../Profile'
 import Image from 'next/image'
 
-const DrawerPaper = styled('div')(({ theme, open }) => ({
+const DrawerPaper = styled('div')(() => ({
   backgroundImage: 'url(/images/menu.svg)',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
@@ -56,13 +56,17 @@ const DrawerCustom = styled(Drawer, {
 const Sidebar = () => {
   const dispatch = useDispatch()
   const openState = useSelector(selectOpenState)
-  // const openState = true
+  const activeStep = useSelector((state) => state.step.value)
 
   return (
     <Box>
       <DrawerCustom
-        onMouseEnter={() => dispatch(setOpenState(!openState))}
-        onMouseLeave={() => dispatch(setOpenState(!openState))}
+        onMouseEnter={() =>
+          dispatch(setOpenState(activeStep === 0 ? !openState : openState))
+        }
+        onMouseLeave={() =>
+          dispatch(setOpenState(activeStep === 0 ? openState : !openState))
+        }
         variant="permanent"
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.

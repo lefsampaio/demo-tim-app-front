@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
 
 const initialState = {
-  openState: false,
+  openState: true,
 }
 export const openSlice = createSlice({
   name: 'open',

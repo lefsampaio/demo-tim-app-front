@@ -7,7 +7,7 @@ const CanalLeftSide = ({ title, subtitle }) => {
         component="h1"
         color="neutral.main"
         gutterBottom
-        mt={10}
+        mt={8}
         sx={{ fontSize: '18px', fontWeight: '700' }}
       >
         {title}
@@ -15,9 +15,7 @@ const CanalLeftSide = ({ title, subtitle }) => {
       {subtitle.map((texto, key) => {
         return (
           <Box key={key}>
-            <Typography color="lighter.main" sx={{ mr: 8 }}>
-              {texto}
-            </Typography>
+            <Typography color="lighter.main">{texto}</Typography>
             <br />
           </Box>
         )

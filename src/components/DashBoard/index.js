@@ -1,5 +1,4 @@
 import {
-  Container,
   Box,
   Typography,
   Paper,
@@ -22,6 +21,7 @@ import { selectListState } from '@/store/campaignSlice'
 import { editedDate, formatDate } from '@/utils/formatDate'
 import LoadingScreen from '../Loading'
 import { useRouter } from 'next/router'
+import { selectOpenState } from '@/store/openSlice'
 
 const DashBoard = () => {
   const router = useRouter()
@@ -55,6 +55,7 @@ const DashBoard = () => {
   const endIndex = page * itemsPerPage
 
   const displayedData = campaigns.content?.slice(startIndex, endIndex)
+  const isTopBarOpen = useSelector(selectOpenState)
 
   const handleDelete = async (id) => {
     await deleteCampaign(id)
@@ -64,11 +65,17 @@ const DashBoard = () => {
   return (
     <>
       <TopBar title="Painel" />
-      <Container>
+      <Box
+        sx={{
+          mt: '90px',
+          mx: '100px',
+          marginLeft: isTopBarOpen ? '250px' : '100px',
+          transition: 'margin-left 0.3s ease',
+        }}
+      >
         <Typography
           component="h1"
-          mt={10}
-          mb={4}
+          mb={11}
           sx={{
             fontSize: '32px',
             fontWeight: '700',
@@ -88,7 +95,7 @@ const DashBoard = () => {
           <Box>
             <Typography
               component="h2"
-              mb={3}
+              mb={2.4}
               sx={{
                 fontSize: '18px',
                 fontWeight: '700',
@@ -99,14 +106,18 @@ const DashBoard = () => {
               Lista de projetos
             </Typography>
             <Typography
-              mb={5}
-              sx={{ color: '#565656', fontSize: '16px', textAlignLast: 'left' }}
+              mb={5.5}
+              sx={{
+                color: '#565656',
+                fontSize: '16px',
+                textAlignLast: 'left',
+              }}
             >
               Confira as campanhas que foram realizadas anteriormente.
             </Typography>
           </Box>
           <TextField
-            sx={{ width: { md: '352px', xs: '100%' } }}
+            sx={{ maxWidth: '352px', width: '352px' }}
             autoFocus
             margin="dense"
             id="campaign"
@@ -129,7 +140,7 @@ const DashBoard = () => {
             sx={{
               display: 'grid',
               gridTemplateColumns: { md: '1fr' },
-              gap: 2,
+              gap: 3,
             }}
           >
             {totalItems > 0 ? (
@@ -264,7 +275,7 @@ const DashBoard = () => {
             display: 'flex',
             justifyContent: { md: 'space-between', xs: 'center' },
             flexDirection: { md: 'row', xs: 'column' },
-            mt: 2,
+            mt: 9,
             mb: 2,
             alignItems: 'center',
           }}
@@ -295,7 +306,7 @@ const DashBoard = () => {
           </Button>
           <DialogCampaign />
         </Box>
-      </Container>
+      </Box>
     </>
   )
 }
